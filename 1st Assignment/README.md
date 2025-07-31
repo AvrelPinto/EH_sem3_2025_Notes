@@ -41,6 +41,14 @@ ncat $ip 12345
 
 ---
 
+### **Screenshot**
+# Ncat Chat Demo
+
+This project demonstrates a simple terminal chat using Ncat.
+
+![Ncat chat example](images/ncat_chat.png)
+
+
 ### **Conclusions**
 
 * I learned how to use `ncat` to establish basic socket communication.
