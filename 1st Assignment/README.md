@@ -1,63 +1,55 @@
-**Assignment 11 Report: Ncat Chat Terminal**
+## **Assignment 11 Report: Ncat Chat Terminal**
 
-**Objective**
-
-To create a simple terminal-based chat system using `ncat` to demonstrate how basic network communication works over TCP. This builds foundational understanding of how data flows between machines — a critical concept in cybersecurity.
+**Name:** Avrel Pinto
 
 ---
 
-**Tools Used**
+### **Methodology**
 
-* **ncat** (from the Nmap suite)
-* **Bash shell** (for scripting)
-* **Two terminals or networked computers**
+To simulate a basic chat between two terminals using network tools, I chose `ncat` (from the Nmap suite). The goal was to create a 10-line script that enables two-way communication between two computers (or terminals on the same machine). One terminal listens on a port, and another connects to it using the IP address.
 
 ---
 
-**Implementation**
+### **Code**
 
-The system uses two scripts:
-
-* `listener.sh`: Runs on Terminal A and listens for TCP connections on port 12345.
-* `client.sh`: Runs on Terminal B, connects to Terminal A using its IP and port 12345.
-
-After connection, both terminals can send and receive messages in real time.
-
----
-
-**Script Overview**
-
-**listener.sh**
+**Terminal A (Listener):**
 
 ```bash
-PORT=12345
-echo "Waiting for connection..."
-ncat -lvp $PORT
+#!/bin/bash
+# Terminal A - Listening on port 12345
+echo "Listening on port 12345..."
+ncat -l 12345
 ```
 
-**client.sh**
+**Terminal B (Connector):**
 
 ```bash
-SERVER_IP=192.168.1.100  # Replace with actual IP
-PORT=12345
-ncat $SERVER_IP $PORT
+#!/bin/bash
+# Terminal B - Connecting to Terminal A
+read -p "Enter listener IP: " ip
+echo "Connecting to $ip..."
+ncat $ip 12345
 ```
 
 ---
 
-**Security Relevance**
+### **Findings**
 
-* **No encryption**: Data sent via `ncat` is in plaintext, making it vulnerable to packet sniffers.
-* **Man-in-the-middle (MITM)**: Demonstrates how easy it is to observe or alter communication without encryption.
-* **Learning outcome**: Understanding TCP chat flow helps explain why secure protocols like SSH, HTTPS, or TLS are needed.
+* `ncat` enables instant peer-to-peer communication using TCP.
+* Communication works seamlessly over localhost or LAN.
+* Each terminal can send and receive text in real time.
+
+---
+
+### **Conclusions**
+
+* I learned how to use `ncat` to establish basic socket communication.
+* The task highlighted how vulnerable plain-text communication is if not encrypted.
+* This exercise mirrors how attackers may exploit open ports to snoop on unsecured chats.
+* Understanding such tools improves awareness of both networking fundamentals and security risks.
 
 ---
 
-**Conclusion**
-
-This simple chat simulation using `ncat` helped reinforce the concepts of TCP communication, port listening, and client-server interaction — all essential foundations for cybersecurity professionals.
-
----
 
 
 
