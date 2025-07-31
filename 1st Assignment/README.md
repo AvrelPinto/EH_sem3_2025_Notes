@@ -46,7 +46,7 @@ ncat $ip 12345
 
 This project demonstrates a simple terminal chat using Ncat.
 
-![Ncat chat example](/NcatchatTerminal.png)
+![Ncat chat example](/1st Assignment/NcatchatTerminal.png)
 
 
 ### **Conclusions**
